@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Sports</title>
+    </head>
+    <body>
+        {% for x in info %}
+        <p>Hello, {{x.name}}</p>
+        <a href="/user/{{x.id}}">Profile</a><br>
+        <a href="/logout">Logout</a><br>
+        <a href="/">Return to Home</a><br>
+        {% endfor %}
+        <h1>Sports</h1>
+        <h2>Please Enter your location and Select a Sport</h2>
+        <form action="/search" method="post">
+            {% csrf_token %}
+            <label>Location: </label><input type="text" name="location"><br><br>
+            <label>Sport: </label><br>
+            <select>
+                <option value="Basketball">Basketball</option>
+                <option value="Football">Football</option>
+                <option value="Soccer">Soccer</option>
+                <option value="Golf">Golf</option>
+                <option value="Baseball">Baseball</option>
+                <option value="Tennis">Tennis</option>
+                <option value="Frisbee">Frisbee</option>
+            </select><br><br>
+            <input type="submit">
+        </form>
+    </body>
+</html>

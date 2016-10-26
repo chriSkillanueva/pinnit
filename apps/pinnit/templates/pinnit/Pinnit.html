@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <title>Project Pinnit</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'pinnit/css/pinnit-style.css' %}">
+        <script type="text/javascript">
+        </script>
+
+    </head>
+
+
+    <body>
+        <div id="wrapper">
+            <div id="banner">
+                {% for x in info %}
+                {% if request.session.current_user_id != 0 %}
+                <p>Hello, {{x.name}}</p>
+                <a href="/user/{{x.id}}">Profile</a><br>
+                <a href="/logout">Logout</a><br>
+                {% endif %}
+                {% endfor %}
+                {% if request.session.current_user_id == 0%}
+                <a href="/logreg">Login</a><br>
+                <a href="/logreg">Register</a><br>
+                {% endif %}
+                <h1>PINNIT</h1>
+            </div>
+            <div id="featured">
+                <h3><i>"As one, we are nothing, but together, we're a bunch of people"</i></h3>
+                <h3><u>Most Recent Meetups</u></h3>
+                <br>
+                <div class="feature"></div>
+                <div class="feature"></div>
+                <div class="feature"></div>
+                <div class="feature"></div>
+                <div class="feature"></div>
+            </div>
+            <div id="main-content">
+                <div id="about">
+                    <h3><u>About Pinnit</u></h3>
+                    <p>Pinnit allows users to create and join local meetups.</p>
+                </div>
+                <div class="category">
+                    <div class="description">
+                    <h3><b>Sports</b></h3>
+                    <p>Looking to play a sport nearby? Or perhaps watch your favorite sport with other die hard fans? Have Pinnit locate meetups around you!</p>
+                    <a href="/sports">View Sport Meetups</a>
+                    </div>
+                    <div class="images">
+                        {% load static%}
+                        <img src="{% static 'pinnit/images/sports.png'%}" alt='sports pic'/><br>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="description">
+                        <h3><b>Dance</b></h3>
+                        <p>Coming soon</p>
+                    </div>
+                    <div class="images">
+                        {% load static%}
+                        <img src="{% static 'pinnit/images/construction.png'%}" alt='construction pic'/><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
